@@ -1,17 +1,32 @@
 const Pet = require("../models/Pet.model");
-const Foster = require("../models/Foster.model");
+const User = require("../models/User.model");
 const router = require("express").Router();
-
+//const ensureAuthenticated = require("../middleware/authentication")
 const isLoggedIn = require("../middleware/isLoggedIn");
 const isLoggedOut = require("../middleware/isLoggedOut");
 
+//ENSURE AUTHENTICATION
+router.get('/private', ensureAuthenticated, (req, res) => {
+    res.render('private', { user: req.user });
+  });
+   
+  function ensureAuthenticated(req, res, next) {
+    if (req.isAuthenticated()) {
+      // The user is authenticated
+      // and we have access to the logged user in req.user
+      return next();
+    } else {
+      res.redirect('/login');
+    }
+  }
 
-// READ DISPLAY LIST OF BOOKS
+
+// READ DISPLAY LIST OF PETS
 
 router.get("/pets", (req, res, next) => {
 
     Pet.find()
-  //      .populate("foster")
+  //      .populate("user")
 
     .then((petsArr) => {
 
@@ -25,30 +40,25 @@ router.get("/pets", (req, res, next) => {
 
 });
 
+// DISPLAY ONLY MY PETS
+
+router.get('/mypets', ensureAuthenticated, (req, res, next) => {
+    const { _id } = req.user;
+    Pet.find({ user: _id })
+      .then((myPets) => res.render('pets/my-pets', { pets: myPets }))
+      .catch((err) => next(err));
+  });
 
 
-// CREATE: render form
 
-// router.get('/books/create', (req, res) => {
-//     const id = req.params.authorId;
-//     Author.findById(id)
-//         .then(() => {
-//             res.render('books/book-create.hbs');
-//         })
-//         .catch(err => {
-//             console.log("error", err)
-//             next(err);
-//         });
-// })
+router.get("/pets/create", (req, res, next) => {
 
-router.get("/books/create", (req, res, next) => {
-
-    Author.find()
-        .then((authorsArr) => {
-            res.render("books/book-create", { authors: authorsArr });
+    User.find()
+        .then((usersArr) => {
+            res.render("pets/pet-create", { users: usersArr });
         })
         .catch(err => {
-            console.log("error getting authors from DB", err)
+            console.log("error getting users from DB", err)
             next(err);
         });
 
@@ -62,19 +72,24 @@ router.get("/books/create", (req, res, next) => {
 
 // CREATE: process form
 
-router.post('/books/create', (req, res, next) => {
-    const newBook = {
-        title: req.body.title,
+router.post('/pets/create', (req, res, next) => {
+    const { _id } = req.user; // <-- Id from the logged user
+    const newPet = {
+        name: req.body.name,
         description: req.body.description,
-        author: req.body.author,
-        rating: req.body.rating
+        gender: req.body.gender,
+        animal: req.body.animal,
+        dateOfBirth: req.body.dateOfBirth,
+        healthIssues: req.body.healthIssues,
+        user: _id
     }
-    Book.create(newBook)
-        .then((bookFromDB) => {
-            res.redirect("/books")
+  
+    Pet.create(newPet)
+        .then((petFromDB) => {
+            res.redirect("/pets")
         })
         .catch(err => {
-            console.log("error creating book on DB", err)
+            console.log("error creating pets on DB", err)
             next(err);
         });
 
@@ -84,16 +99,16 @@ router.post('/books/create', (req, res, next) => {
 
 
 //READ DISPLAY BOOK DETAILS
-router.get("/books/:bookId", (req, res, next) => {
-    const id = req.params.bookId;
+router.get("/pets/:petId", (req, res, next) => {
+    const id = req.params.petId;
 
     Book.findById(id)
-        .populate("author")
-        .then((bookDetails) => {
-            res.render("books/book-details", bookDetails);
+        .populate("user")
+        .then((petDetails) => {
+            res.render("pets/pet-details", petDetails);
         })
         .catch(err => {
-            console.log("error getting book details from DB", err)
+            console.log("error getting pet details from DB", err)
             next(err);
         });
 })
@@ -101,50 +116,52 @@ router.get("/books/:bookId", (req, res, next) => {
 
 
 // UPDATE: display form
-router.get("/books/:bookId/edit", (req, res, next) => {
-    const id = req.params.bookId;
-    Book.findById(id)
-        .then((bookDetails) => {
-            res.render("books/book-edit", bookDetails);
+router.get("/pets/:petId/edit", (req, res, next) => {
+    const id = req.params.petId;
+    Pet.findById(id)
+        .then((petDetails) => {
+            res.render("pets/pet-edit", petDetails);
         })
         .catch(err => {
-            console.log("error getting book details from DB", err)
+            console.log("error getting pet details from DB", err)
             next(err);
         });
 });
 
-// UPDATE: process form
-router.post("/books/:bookId/edit", isLoggedIn, (req, res, next) => {
+// UPDATE: process form 
+router.post("/pets/:petId/edit", isLoggedIn, (req, res, next) => {
 
-    const id = req.params.bookId;
+    const id = req.params.petId;
 
     const newDetails = {
-        title: req.body.title,
+        name: req.body.name,
         description: req.body.description,
-        author: req.body.author,
-        rating: req.body.rating,
+        gender: req.body.gender,
+        animal: req.body.animal,
+        dateOfBirth: req.body.dateOfBirth,
+        healthIssues: req.body.healthIssues
     };
 
-    Book.findByIdAndUpdate(id, newDetails)
-        .then((bookFromDB) => {
-            res.redirect(`/books/${bookFromDB._id}`);
+    Pet.findByIdAndUpdate(id, newDetails)
+        .then((petFromDB) => {
+            res.redirect(`/pets/${petFromDB._id}`);
         })
         .catch(err => {
-            console.log("error updating book in DB", err)
+            console.log("error updating pet in DB", err)
             next(err);
         });
 });
 
 
-//DELETE functionality
+//DELETE functionality   
 
-router.post('/books/:bookId/delete', isLoggedIn, (req, res, next) => {
-    const id = req.params.bookId;
+router.post('/pets/:petId/delete', isLoggedIn, (req, res, next) => {
+    const id = req.params.petId;
 
-    Book.findByIdAndDelete(id)
-        .then(() => res.redirect('/books'))
+    Pet.findByIdAndDelete(id)
+        .then(() => res.redirect('/pets'))
         .catch(err => {
-            console.log("error deleting book from DB", err)
+            console.log("error deleting pet from DB", err)
             next(err);
         });
 });
