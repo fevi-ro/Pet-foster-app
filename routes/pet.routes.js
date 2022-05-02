@@ -1,24 +1,11 @@
 const Pet = require("../models/Pet.model");
 const User = require("../models/User.model");
 const router = require("express").Router();
-//const ensureAuthenticated = require("../middleware/authentication")
+const ensureAuthenticated = require("./index.routes")
 const isLoggedIn = require("../middleware/isLoggedIn");
 const isLoggedOut = require("../middleware/isLoggedOut");
 
-//ENSURE AUTHENTICATION
-router.get('/private', ensureAuthenticated, (req, res) => {
-    res.render('private', { user: req.user });
-  });
-   
-  function ensureAuthenticated(req, res, next) {
-    if (req.isAuthenticated()) {
-      // The user is authenticated
-      // and we have access to the logged user in req.user
-      return next();
-    } else {
-      res.redirect('/login');
-    }
-  }
+
 
 
 // READ DISPLAY LIST OF PETS
@@ -26,7 +13,7 @@ router.get('/private', ensureAuthenticated, (req, res) => {
 router.get("/pets", (req, res, next) => {
 
     Pet.find()
-  //      .populate("user")
+        .populate("user")
 
     .then((petsArr) => {
 
@@ -42,14 +29,14 @@ router.get("/pets", (req, res, next) => {
 
 // DISPLAY ONLY MY PETS
 
-router.get('/mypets', ensureAuthenticated, (req, res, next) => {
-    const { _id } = req.user;
-    Pet.find({ user: _id })
+router.get('/mypets', (req, res, next) => {
+ // const { _id } = req.user;
+     Pet.find( ) 
       .then((myPets) => res.render('pets/my-pets', { pets: myPets }))
       .catch((err) => next(err));
   });
 
-
+  //{ user: _id } ensureAuthenticated
 
 router.get("/pets/create", (req, res, next) => {
 
@@ -79,6 +66,7 @@ router.post('/pets/create', (req, res, next) => {
         description: req.body.description,
         gender: req.body.gender,
         animal: req.body.animal,
+        image: req.body.image,
         dateOfBirth: req.body.dateOfBirth,
         healthIssues: req.body.healthIssues,
         user: _id
@@ -98,11 +86,11 @@ router.post('/pets/create', (req, res, next) => {
 
 
 
-//READ DISPLAY BOOK DETAILS
+//READ DISPLAY PET DETAILS
 router.get("/pets/:petId", (req, res, next) => {
     const id = req.params.petId;
 
-    Book.findById(id)
+    Pet.findById(id)
         .populate("user")
         .then((petDetails) => {
             res.render("pets/pet-details", petDetails);
@@ -139,6 +127,7 @@ router.post("/pets/:petId/edit", isLoggedIn, (req, res, next) => {
         gender: req.body.gender,
         animal: req.body.animal,
         dateOfBirth: req.body.dateOfBirth,
+        image: req.body.image,
         healthIssues: req.body.healthIssues
     };
 
