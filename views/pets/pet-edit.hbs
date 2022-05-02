@@ -1,0 +1,26 @@
+
+<h2>Edit the pet: {{this.name}}</h2>
+
+<form action="/pets/{{this._id}}/edit" method="post">  {{!-- action: where we send the info --}}
+  <label> description
+    <input type="text" name="description" value="{{this.description}}" />
+  </label>
+
+  <label> gender
+    <input type="text" name="gender" value="{{this.gender}}" />
+  </label>
+
+  <label> animal
+    <textarea name="description" cols="30" rows="4">{{this.animal}}</textarea>
+  </label>
+
+  <label> dateOfBirth
+    <input type="text" name="dateOfBirth" value="{{this.dateOfBirth}}" />
+  </label>
+
+  <label> healthIssues
+    <input type="text" name="healthIssues" value="{{this.healthIssues}}" />
+  </label>
+
+  <button>Save changes</button>
+</form>
