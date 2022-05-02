@@ -21,3 +21,5 @@ const petSchema = new Schema({
 const Pet = model("Pet", petSchema);
 
 module.exports = Pet;
+
+//my-pets.hbs
