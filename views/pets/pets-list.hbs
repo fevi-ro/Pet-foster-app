@@ -1,0 +1,13 @@
+<h1>List of Pets in our Database</h1>
+
+ {{#each pets}}
+
+<h2>{{this.name}}</h2>
+<p>{{this.description}}</p>
+//<h2>by {{this.foster.name}}</h2>
+  <a href="/pets/{{_id}}">See details</a> {{!-- link that points to the details page --}}
+<h2>{{this.animal}}</h2>
+<h2>{{this.gender}}</h2>
+<h2>{{this.dateOfBirth}}</h2>
+<h2>{{this.healthIssues}}</h2>
+ {{/each}}
