@@ -4,22 +4,22 @@ const { Schema, model } = require("mongoose");
 
 const petSchema = new Schema({
     name: String,
-    animal: String, enum: ["dog", "cat", "rabbit", "guinea pig", "hamster"],
+    animal: { type: String, enum: ["dog", "cat", "rabbit", "guinea pig", "hamster"]},
     gender: String,
     dateOfBirth: String,
     image: String, 
     description: String,
     healthIssues: [],
+   user: {
+      type: mongoose.Schema.Types.ObjectId,
+       ref: "User" }
+});
+
   //  location: String,
   // team: String
   // name: String
-   user: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
-
-
-});
-
-
 const Pet = model("Pet", petSchema);
+
 
 module.exports = Pet;
 

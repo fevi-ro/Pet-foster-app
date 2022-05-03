@@ -1,12 +1,23 @@
 const Pet = require("../models/Pet.model");
 const User = require("../models/User.model");
 const router = require("express").Router();
-const ensureAuthenticated = require("./index.routes")
+//const ensureAuthenticated = require("./index.routes")
 const isLoggedIn = require("../middleware/isLoggedIn");
 const isLoggedOut = require("../middleware/isLoggedOut");
 
 
-
+// router.get('/private', ensureAuthenticated, (req, res) => {
+//     res.render('private', { user: req.user });
+//  });
+  
+//   function ensureAuthenticated(req, res, next) {
+//    if (req.isAuthenticated()) {
+//      // The user is authenticated
+//     // and we have access to the logged user in req.user
+//      next();
+//     } else {
+//      res.redirect('/login');   }
+//   }
 
 // READ DISPLAY LIST OF PETS
 
@@ -39,15 +50,16 @@ router.get('/mypets', (req, res, next) => {
   //{ user: _id } ensureAuthenticated
 
 router.get("/pets/create", (req, res, next) => {
-
-    User.find()
-        .then((usersArr) => {
-            res.render("pets/pet-create", { users: usersArr });
-        })
-        .catch(err => {
-            console.log("error getting users from DB", err)
-            next(err);
-        });
+   const animals = Pet.schema.path("animal").enumValues;
+  //  Pet.find()
+   // .populate("user")
+     //   .then((petsArr) => {
+            res.render("pets/pet-create", { animals });
+   //     })
+     //   .catch(err => {
+        //    console.log("error getting pets from DB", err)
+    //        next(err);
+  //      });
 
 
 
@@ -60,7 +72,8 @@ router.get("/pets/create", (req, res, next) => {
 // CREATE: process form
 
 router.post('/pets/create', (req, res, next) => {
-    const { _id } = req.user; // <-- Id from the logged user
+  //  const userId = req.user._id // <-- Id from the logged user
+  
     const newPet = {
         name: req.body.name,
         description: req.body.description,
@@ -69,10 +82,11 @@ router.post('/pets/create', (req, res, next) => {
         image: req.body.image,
         dateOfBirth: req.body.dateOfBirth,
         healthIssues: req.body.healthIssues,
-        user: _id
+        user: req.session.currentUser._id
     }
-  
+   
     Pet.create(newPet)
+   
         .then((petFromDB) => {
             res.redirect("/pets")
         })
@@ -128,7 +142,8 @@ router.post("/pets/:petId/edit", isLoggedIn, (req, res, next) => {
         animal: req.body.animal,
         dateOfBirth: req.body.dateOfBirth,
         image: req.body.image,
-        healthIssues: req.body.healthIssues
+        healthIssues: req.body.healthIssues,
+        user: req.body.user
     };
 
     Pet.findByIdAndUpdate(id, newDetails)

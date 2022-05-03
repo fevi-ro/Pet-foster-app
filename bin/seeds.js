@@ -24,7 +24,7 @@ mongoose
 
 const pets = [{
     name: "Peaches",
-    animal: "Dog",
+    animal: "dog",
     gender: "female",
     dateOfBirth: "March 2018",
     description: "iefgjigjwogjiogogwgwj",
@@ -35,7 +35,7 @@ const pets = [{
 
     {
         name: "Minette",
-        animal: "Cat",
+        animal: "cat",
         gender: "female",
         dateOfBirth: "January 2020",
         description: "iefgjigjwogjiogogwgwj",
