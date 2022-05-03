@@ -18,9 +18,9 @@ router.get("/signup", isLoggedOut, (req, res, next) => {
 
 router.post("/signup", isLoggedOut, (req, res, next) => {
 
-    const {password, email} = req.body;
+    const {password, email, name, location, team} = req.body;
 
-    if( !password || !email ){
+    if( !password || !email || !name || !location || !team){
         res.render('auth/signup', { errorMessage: 'All fields are mandatory. Please provide email and password.' });
         return;
     }
@@ -33,6 +33,9 @@ router.post("/signup", isLoggedOut, (req, res, next) => {
         .then( (hash) => {
             const userDetails = {
                 email,
+                name,
+                location, 
+                team,
                 passwordHash: hash
             }
             return User.create(userDetails);

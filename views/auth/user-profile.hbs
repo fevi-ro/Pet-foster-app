@@ -1,11 +1,19 @@
 <h1>Profile Page</h1>
-
+   {{!-- {{#each userInSession}} --}}
 {{#if userInSession}}
   <h2>Welcome, {{ userInSession.email }}!</h2>
+  <h2>Name {{userInSession.name}}</h2>
+<p>Location {{userInSession.location}}</p>
+<h2>team: {{userInSession.team}}</h2> 
   <p>This is your profile page my friend!</p>
+
+
+
+
   <button>
     <a href="/user-profile">Reload the page</a>
   </button>
 {{else}}
   <p>Still no logged in user, sorry!</p>
 {{/if}}
+ {{!-- {{/each}} --}}

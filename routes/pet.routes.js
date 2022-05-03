@@ -1,68 +1,91 @@
 const Pet = require("../models/Pet.model");
 const User = require("../models/User.model");
 const router = require("express").Router();
-//const ensureAuthenticated = require("./index.routes")
+
 const isLoggedIn = require("../middleware/isLoggedIn");
 const isLoggedOut = require("../middleware/isLoggedOut");
 
 
-// router.get('/private', ensureAuthenticated, (req, res) => {
-//     res.render('private', { user: req.user });
-//  });
-  
-//   function ensureAuthenticated(req, res, next) {
-//    if (req.isAuthenticated()) {
-//      // The user is authenticated
-//     // and we have access to the logged user in req.user
-//      next();
-//     } else {
-//      res.redirect('/login');   }
-//   }
-
-// READ DISPLAY LIST OF PETS
-
+//animal type
+//location
+//gender
+// const pet = req.params.pet
+// url -> /pets/cat
 router.get("/pets", (req, res, next) => {
+    const {animal, location, gender} = req.query;
+   let searchedPet;
+   if (animal !== undefined){
+   
+        searchedPet = {
+            animal: animal,
+            location: location,
+            gender: gender
+        }
+    }
+    else {
+        searchedPet = {}
+    }
+   
+  
+   console.log(searchedPet);
 
-    Pet.find()
-        .populate("user")
+    Pet.find(searchedPet)
+
 
     .then((petsArr) => {
-
-            res.render("pets/pets-list", { pets: petsArr })
+        const animals = Pet.schema.path("animal").enumValues; 
+            res.render("pets/pets-list", { pets: petsArr, animals })
         })
         .catch(err => {
             console.log("error getting pets from DB", err)
             next(err);
         });
 
-
+   //     , location, gender)
 });
+
+//FILTER PETS
+
+router.post('/pets', (req, res) => {
+  //  const {location, gender, animal} = req.body;
+
+    let filter ={}; 
+    if(req.body.animal){  
+    filter.animal = req.body.animal;
+ }
+//  if(req.body.location){  
+//     filter.location = req.body.location;
+//  }
+ if(req.body.gender){  
+    filter.gender = req.body.gender;
+ }
+ console.log(filter)
+    Pet.find(filter)
+    .then ((pets) => {
+    console.log(pets)
+ //     res.render('pets-list', { gender, animal, pets: result});
+    })
+  })
+
+
 
 // DISPLAY ONLY MY PETS
 
 router.get('/mypets', (req, res, next) => {
- // const { _id } = req.user;
-     Pet.find( ) 
+
+   const { _id } = req.session.currentUser;
+     Pet.find({user: _id})
+     
       .then((myPets) => res.render('pets/my-pets', { pets: myPets }))
       .catch((err) => next(err));
   });
 
-  //{ user: _id } ensureAuthenticated
+ 
 
 router.get("/pets/create", (req, res, next) => {
    const animals = Pet.schema.path("animal").enumValues;
-  //  Pet.find()
-   // .populate("user")
-     //   .then((petsArr) => {
+  
             res.render("pets/pet-create", { animals });
-   //     })
-     //   .catch(err => {
-        //    console.log("error getting pets from DB", err)
-    //        next(err);
-  //      });
-
-
-
 
 })
 
@@ -72,7 +95,7 @@ router.get("/pets/create", (req, res, next) => {
 // CREATE: process form
 
 router.post('/pets/create', (req, res, next) => {
-  //  const userId = req.user._id // <-- Id from the logged user
+
   
     const newPet = {
         name: req.body.name,
@@ -82,7 +105,9 @@ router.post('/pets/create', (req, res, next) => {
         image: req.body.image,
         dateOfBirth: req.body.dateOfBirth,
         healthIssues: req.body.healthIssues,
-        user: req.session.currentUser._id
+        location: req.body.location,
+        user: req.session.currentUser._id,
+      //  location: req.session.currentUser.location
     }
    
     Pet.create(newPet)
@@ -107,7 +132,7 @@ router.get("/pets/:petId", (req, res, next) => {
     Pet.findById(id)
         .populate("user")
         .then((petDetails) => {
-            res.render("pets/pet-details", petDetails);
+            res.render("pets/pet-details", petDetails,);
         })
         .catch(err => {
             console.log("error getting pet details from DB", err)
@@ -138,12 +163,12 @@ router.post("/pets/:petId/edit", isLoggedIn, (req, res, next) => {
     const newDetails = {
         name: req.body.name,
         description: req.body.description,
-        gender: req.body.gender,
-        animal: req.body.animal,
+     
         dateOfBirth: req.body.dateOfBirth,
         image: req.body.image,
         healthIssues: req.body.healthIssues,
-        user: req.body.user
+        location: req.body.location,
+        user: req.session.currentUser._id
     };
 
     Pet.findByIdAndUpdate(id, newDetails)

@@ -2,6 +2,17 @@
 <hr>
 <p>{{gender}}</p>
 <p>{{description}}</p>
+<p>{{location}}</p>
+<p>{{animal}}</p>
+
+
+<hr>
+<a href="/pets/{{_id}}/edit">Edit</a>
+<hr>
+    <form action="/pets/{{_id}}/delete" method="POST">
+      <button>Delete</button>
+    </form>
+    <br>
 
 <hr>
 <a href="/pets">Back</a>

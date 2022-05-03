@@ -10,6 +10,7 @@ const petSchema = new Schema({
     image: String, 
     description: String,
     healthIssues: [],
+    location: String,
    user: {
       type: mongoose.Schema.Types.ObjectId,
        ref: "User" }
