@@ -1,0 +1,10 @@
+ {{#each pets}}
+
+<h2>{{this.name}}</h2>
+<p>{{this.gender}}</p>
+//<h2>description: {{this.description}}</h2>
+  <a href="/pets/{{this._id}}">See details</a> {{!-- link that points to the details page --}}
+<p>{{this.animal}}</p>
+<p>{{this.location}}</p>
+
+ {{/each}}

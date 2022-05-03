@@ -13,21 +13,22 @@ const isLoggedOut = require("../middleware/isLoggedOut");
 // url -> /pets/cat
 router.get("/pets", (req, res, next) => {
     const {animal, location, gender} = req.query;
-   let searchedPet;
-   if (animal !== undefined){
+  let searchedPet;
+   if (location !== undefined){
    
         searchedPet = {
             animal: animal,
             location: location,
             gender: gender
-        }
+     }
     }
     else {
-        searchedPet = {}
-    }
+      searchedPet = {}
+  }
    
   
    console.log(searchedPet);
+   
 
     Pet.find(searchedPet)
 
@@ -41,7 +42,7 @@ router.get("/pets", (req, res, next) => {
             next(err);
         });
 
-   //     , location, gender)
+
 });
 
 //FILTER PETS
