@@ -1,7 +1,9 @@
+<main class="wrapper">
+<div class="container">
 <h1>List of Pets in our Database</h1>
 
 
-<div>
+<div class="filter">
    <form method="GET" action="/pets" >
    <label> Animal:</label>
     <select name="animal">
@@ -30,21 +32,25 @@
       <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
     </form>
 </div>
-
+<div class="card">
  {{#each pets}}
-
-<h2>{{this.name}}</h2>
-<p>Gender: {{this.gender}}</p>
-<p>dateOfBirth: {{this.dateOfBirth}}</p>
-
-
-  <a href="/pets/{{this._id}}">See details</a> {{!-- link that points to the details page --}}
-<p>{{this.animal}}</p>
-<p>Location {{this.user.location}}</p>
-   
- <p>Foster: {{this.user.name}}</p>
- <p>Team: {{this.user.team}}</p>
 <img src="{{this.image}}" alt="Pet image">
+<h2>{{this.name}}</h2>
+<p>{{this.animal}}</p>
+<div class="pet-info">
+  <p>Location {{this.user.location}}</p>
+<p>Date of birth: {{this.dateOfBirth}}</p>
+</div>
+<div class="pet-info2"><p>Gender: {{this.gender}}</p>
+ <p>Foster: {{this.user.name}}</p>
+ <p>Team: {{this.user.team}}</p></div>
+
+  
+<button><a href="/pets/{{this._id}}">See details</a> {{!-- link that points to the details page --}}</button> <br>
 
  {{/each}}
+
+</div>
+</div>
+</main>
 
