@@ -42,15 +42,125 @@ h1 {
 .wrapper {
   max-width: 1100px;
   margin: 0 auto;
-  overflow: hidden;
+
 }
 
+.container {
+
+  text-align: center;
+  background-color: #5f6c65;
+padding-top: 1rem;
+padding-bottom: 1rem;
+  margin: 2rem;
+}
+.filter {
+  text-align: center;
+  margin: 2rem;
+}
+.columns {
+  background-color: pink;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  max-width: 100%;
+  flex-direction: row;
+
+}
+
+.card {
+  background-color: rgb(0, 181, 181);
+  max-width: 30%;
+  margin: 1rem;
+  padding: 1rem;
+  margin-bottom: 3rem;
+  margin-right: 2rem;
+
+  text-align: center;
+}
+
+.pet-info {
+  display: inline-flex;
+  width: 100%;
+  background-color: azure;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  padding-left: 0.5rem;
+
+}
+
+.pet-info2 {
+  text-align:left;
+}
+
+label {
+  margin-left: 2rem;
+}
+
+.btn-filter {
+  margin-left: 1rem;
+ 
+}
+
+img {
+  max-width: 100%;
+}
+
+h3 {
+  margin-right: 0.8rem;
+
+}
+
+
+/* Navigation */
+
 nav {
-  max-width: 1100px;
+
   margin: 0 auto;
 }
 
 header {
-  background: #000000;
-  padding: 10px 0;
+  background: #c68080;
+  padding: 1rem;
+  padding-bottom: 2rem;
+  margin-left: -2rem;
 }
+
+ul {
+  float: right;
+  margin: 0rem;
+}
+
+ul li {
+  position: relative;
+  list-style: none;
+}
+
+ul li {
+  position: relative;
+  display: inline;
+  margin: 0 0 0 25px;
+  list-style: none;
+}
+
+ul li a{
+  color: rgb(0, 0, 0);
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 17px;
+  font-family: 'Nunito';
+  padding: 15px 0 15px 15px;
+  transition: all 0.15s linear 0s;
+}
+
+ul li a:hover,
+ul#subnavigation .active,
+ul li a.active,
+#subnavigation li a:hover {
+  color: #5f6c65;
+}
+
+#logout-form {
+  display: inline-flex;
+}
+

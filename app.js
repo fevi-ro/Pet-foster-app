@@ -18,6 +18,8 @@ const app = express();
 //session config
 require('./config/session.config')(app);
 
+
+
 // ℹ️ This function is getting exported from the config folder. It runs most pieces of middleware
 require("./config")(app);
 
@@ -31,6 +33,7 @@ const index = require("./routes/index.routes");
 app.use("/", index);
 app.use("/", require("./routes/pet.routes"));
 app.use("/", require("./routes/auth.routes"));
+app.use(express.static(__dirname + '/public/images'));
 
 const authRoutes = require("./routes/auth.routes");
 app.use("/auth", authRoutes);

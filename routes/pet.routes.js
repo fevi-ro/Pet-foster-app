@@ -51,6 +51,7 @@ router.get("/pets", (req, res, next) => {
     console.log("searchedPet", searchedPet);
 
 Pet.find(searchedPet)
+.populate("user")
     .then((petsArr) => {
         console.log("foundPet", petsArr);
         const animals = Pet.schema.path("animal").enumValues;

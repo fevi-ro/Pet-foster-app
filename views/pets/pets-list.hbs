@@ -1,9 +1,10 @@
 <main class="wrapper">
 <div class="container">
-<h1>List of Pets in our Database</h1>
 
+ <h1>All Pets available for adoption</h1>
 
 <div class="filter">
+ 
    <form method="GET" action="/pets" >
    <label> Animal:</label>
     <select name="animal">
@@ -12,45 +13,79 @@
       {{/each}}
       </select>
 {{!-- 
-      <label for="gender">Gender</label>
+     
       <select name= "gender"> 
       {{#each  pets}}
       <option value="{{this.gender}}">{{this.gender}}</option>
       {{/each}}
       </select> --}}
 
-       {{!-- <label> Location:</label>
+       {{!-- 
     <select name="location">
       {{#each pets}}
         <option value="{{this.location}}">{{this.location}}</option>
       {{/each}}
       </select> --}}
- <input type="text" name="gender"> </input>
-      <input type="text" name="location"> </input>
+   <label for="gender">Gender</label>
+ <input type="text" name="gender" placeholder="female"> </input>
+ <label> Location:</label>
+      <input type="text" name="location" placeholder="Berlin"> </input>
 
     
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      <button class="btn-filter" type="submit">Search</button>
     </form>
 </div>
+
+
+
+    <section class="columns">
+      {{!-- {{#grouped_each 3 pets}} --}}
 <div class="card">
  {{#each pets}}
+ <h2>{{this.name}}</h2>
 <img src="{{this.image}}" alt="Pet image">
-<h2>{{this.name}}</h2>
-<p>{{this.animal}}</p>
+
+
 <div class="pet-info">
-  <p>Location {{this.user.location}}</p>
-<p>Date of birth: {{this.dateOfBirth}}</p>
+ <i class="material-icons">pets</i><h3>{{this.animal}}</h3>
+ <i class="material-icons">home</i> <h3> {{this.user.location}}</h3>
+<i class="material-icons">cake</i><h3> {{this.dateOfBirth}}</h3>
 </div>
 <div class="pet-info2"><p>Gender: {{this.gender}}</p>
  <p>Foster: {{this.user.name}}</p>
- <p>Team: {{this.user.team}}</p></div>
-
-  
+ <p>Team: {{this.user.team}}</p>
 <button><a href="/pets/{{this._id}}">See details</a> {{!-- link that points to the details page --}}</button> <br>
-
+</div>
  {{/each}}
 
 </div>
+{{!-- {{/grouped_each}} --}}
+</section>
 </div>
 </main>
 
+
+
+{{!-- <script>
+  //register new handlebars function
+function hbsHelpers(hbs){
+  hbs.registerHelper('grouped_each', function(every, context, options) {
+    var out = "", subcontext = [], i;
+    if (context && context.length > 0) {
+        for (i = 0; i < context.length; i++) {
+            if (i > 0 && i % every === 0) {
+                out += options.fn(subcontext);
+                subcontext = [];
+            }
+            subcontext.push(context[i]);
+        }
+        out += options.fn(subcontext);
+    }
+    return out;
+  });
+  }
+  
+  
+  module.exports = hbsHelpers;
+
+</script> --}}

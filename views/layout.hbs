@@ -6,25 +6,28 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>{{appTitle}}</title>
     <link rel="stylesheet" href="/stylesheets/style.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   </head>
 
   <body>
 <header class="box">
          <nav>
-            <a href="/"> Homepage  </a> |
-            <a href="/pets">Pets</a> |
-            <a href="/pets/create">Add Pet</a> |
-            <a href="/mypets">My Pets</a> |
-             <a href="/user-profile">User Profile</a> |
-       |||||
-            <a href="/signup">Register</a>
-             <a href="/login">Login</a> 
-              <form id="logout-form" action="/logout" method="POST">
+           <ul>
+             <li><a href="/"> Homepage  </a></li>
+             <li> <a href="/pets">Pets</a></li>
+             <li><a href="/pets/create">Add Pet</a></li>
+             <li><a href="/mypets">My Pets</a></li>  
+             <li>  <a href="/user-profile">User Profile</a></li>
+             <li>   <a href="/signup">Register</a></li>
+             <li>     <a href="/login">Login</a> </li>
+            <li><form id="logout-form" action="/logout" method="POST">
     <button>Logout</button>
-  </form>
+  </form></li>
+           </ul>
+ 
          </nav>
       </header>
-
+<div class="wrapper"></div>
     {{{body}}}
 
     <script src="/js/script.js"></script>
