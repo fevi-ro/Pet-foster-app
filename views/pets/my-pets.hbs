@@ -1,11 +1,22 @@
 <h1>My Pets</h1>
+<br>
 
  {{#each pets}}
 
 <h2>{{this.name}}</h2>
 <p>{{this.gender}}</p>
-<h2>description {{this.description}}</h2>
+<p>{{this.description}}</p>
  
+  <img src="{{image}}" alt="pet image">
+<br>
+<a href="/pets/{{_id}}/edit">Edit</a>
+<br>
+    <form action="/pets/{{_id}}/delete" method="POST">
+      <button>Delete</button>
+    </form>
+<a href="/pets">Back</a>
+<br>
+<br>
 
  {{/each}}
 

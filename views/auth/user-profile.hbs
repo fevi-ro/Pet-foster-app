@@ -1,11 +1,11 @@
-<h1>Profile Page</h1>
+<h1>Your information</h1>
    {{!-- {{#each userInSession}} --}}
 {{#if userInSession}}
-  <h2>Welcome, {{ userInSession.email }}!</h2>
-  <h2>Name {{userInSession.name}}</h2>
-<p>Location {{userInSession.location}}</p>
-<h2>team: {{userInSession.team}}</h2> 
-  <p>This is your profile page my friend!</p>
+<h2>Welcome, {{ userInSession.email }}!</h2>
+<p>Name: {{userInSession.name}}</p>
+<p>Location: {{userInSession.location}}</p>
+<p>Rescue Team: {{userInSession.team}}</p> 
+<p>This is your profile page my friend!</p>
 
 
 
