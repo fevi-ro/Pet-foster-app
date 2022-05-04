@@ -4,6 +4,7 @@ const router = require("express").Router();
 
 const isLoggedIn = require("../middleware/isLoggedIn");
 const isLoggedOut = require("../middleware/isLoggedOut");
+const { populate } = require("../models/Pet.model");
 
 
 //animal type
@@ -28,14 +29,13 @@ router.get("/pets", (req, res, next) => {
    
   
    console.log(searchedPet);
-   
 
     Pet.find(searchedPet)
-
+.populate("user")
 
     .then((petsArr) => {
         const animals = Pet.schema.path("animal").enumValues; 
-            res.render("pets/pets-list", { pets: petsArr, animals })
+            res.render("pets/pets-list", { pets: petsArr, animals})
         })
         .catch(err => {
             console.log("error getting pets from DB", err)
@@ -76,7 +76,7 @@ router.get('/mypets', (req, res, next) => {
 
    const { _id } = req.session.currentUser;
      Pet.find({user: _id})
-     
+     .populate("user")
       .then((myPets) => res.render('pets/my-pets', { pets: myPets }))
       .catch((err) => next(err));
   });
@@ -147,6 +147,7 @@ router.get("/pets/:petId", (req, res, next) => {
 router.get("/pets/:petId/edit", (req, res, next) => {
     const id = req.params.petId;
     Pet.findById(id)
+    .populate("user")
         .then((petDetails) => {
             res.render("pets/pet-edit", petDetails);
         })
