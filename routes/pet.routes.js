@@ -103,7 +103,7 @@ router.get('/mypets', isLoggedIn, (req, res, next) => {
 
 
 
-router.get("/pets/create", (req, res, next) => {
+router.get("/pets/create", isLoggedIn, (req, res, next) => {
     const animals = Pet.schema.path("animal").enumValues;
 
     res.render("pets/pet-create", { animals });
