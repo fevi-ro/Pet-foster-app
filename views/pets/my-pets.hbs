@@ -1,22 +1,35 @@
-<h1>My Pets</h1>
-<br>
+<main class="wrapper">
+<div class="container">
+    <h1>My Pets</h1>
 
+ <section class="columns">
+      {{!-- {{#grouped_each 3 pets}} --}}
+<div class="card">
  {{#each pets}}
 
 <h2>{{this.name}}</h2>
-<p>{{this.gender}}</p>
-<p>{{this.description}}</p>
- 
-  <img src="{{image}}" alt="pet image">
-<br>
+<img src="{{this.image}}" alt="Pet image">
+
+<div class="pet-info">
+ <i class="material-icons">pets</i><h3>{{this.animal}}</h3>
+ <i class="material-icons">home</i> <h3> {{this.user.location}}</h3>
+<i class="material-icons">cake</i><h3> {{this.dateOfBirth}}</h3>
+</div>
+<div class="pet-info2"><p>Gender: {{this.gender}}</p>
+ <p>Foster: {{this.user.name}}</p>
+ <p>Team: {{this.user.team}}</p>
+
 <a href="/pets/{{_id}}/edit">Edit</a>
-<br>
-    <form action="/pets/{{_id}}/delete" method="POST">
+
+<form action="/pets/{{_id}}/delete" method="POST">
       <button>Delete</button>
     </form>
 <a href="/pets">Back</a>
 <br>
-<br>
-
+</div>
  {{/each}}
+ </div>
+ </section>
+</div>
+</main>
 

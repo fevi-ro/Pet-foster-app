@@ -13,6 +13,7 @@
 {{#if userInSession}}
 
 
+
 <div class="user-card">
   <img src="images/black-profile-logo.png" alt="John" style="width:100%">
 
@@ -21,8 +22,9 @@
 <h3>Location: {{userInSession.location}} </h3>
 <h3>Rescue Team: {{userInSession.team}}</h3>
 
-  <p><button> <a href="/user-profile">Reload the page</a></button></p>
-</div>
+  <button>
+    <a href="/pets">Back</a>
+  </button>
 {{else}}
 <p>Still no logged in user, sorry!</p>
 {{/if}}

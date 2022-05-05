@@ -91,6 +91,7 @@ router.get('/user-profile', isLoggedIn, (req, res) => {
 });
 
 
+
 router.post('/logout', isLoggedIn, (req, res, next) => {
     req.session.destroy(err => {
         if (err) next(err);
