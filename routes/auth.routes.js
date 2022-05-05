@@ -76,7 +76,7 @@ router.post("/login", isLoggedOut, (req, res, next) => {
                 //login sucessful
                req.session.currentUser = userFromDB;
               // res.render('auth/user-profile', { user });
-                res.redirect("auth/user-profile");
+                res.redirect("/user-profile");
             } else {
                 //login failed
                 res.render('auth/login', { errorMessage: 'Incorrect credentials.' });

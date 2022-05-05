@@ -19,12 +19,12 @@
  <p>Foster: {{this.user.name}}</p>
  <p>Team: {{this.user.team}}</p>
 
-<a href="/pets/{{_id}}/edit">Edit</a>
+<button><a href="/pets/{{_id}}/edit">Edit</a></button>
 
 <form action="/pets/{{_id}}/delete" method="POST">
       <button>Delete</button>
     </form>
-<a href="/pets">Back</a>
+<button><a href="/pets">Back</a></button>
 <br>
 </div>
  {{/each}}

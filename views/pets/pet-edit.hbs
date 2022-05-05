@@ -1,19 +1,22 @@
-
-<h2>Edit the pet: {{this.name}}</h2>
+<main class="wrapper">
+  <section class="edit">
+<h1>Edit the pet's details: {{this.name}}</h1>
 
 <form action="/pets/{{this._id}}/edit" method="post">  {{!-- action: where we send the info --}}
-  <label> description
+  <label> Description
     <input type="text" name="description" value="{{this.description}}" />
   </label>
 
 
-  <label> dateOfBirth
+  <label> Date of Birth
     <input type="text" name="dateOfBirth" value="{{this.dateOfBirth}}" />
   </label>
 
-  <label> healthIssues
+  <label> Health Issues
     <input type="text" name="healthIssues" value="{{this.healthIssues}}" />
   </label>
 
   <button>Save changes</button>
 </form>
+</section>
+</main>

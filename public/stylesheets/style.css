@@ -25,19 +25,14 @@ html {
 
 
 body {
-  font-family: 'Nunito', Helvetica, Arial, sans-serif;
-  font-weight: 400;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 300;
   line-height: 1.35rem;
-  color: #2e2e2e;
+  color: #2f2f2f;
+  font-size: 1.1rem;
 }
 
-a {
-  color: #c8c8c8;
-}
 
-h1 {
-  color: 15px;
-}
 
 .wrapper {
   max-width: 1100px;
@@ -52,7 +47,7 @@ label {
 .container {
 
   text-align: center;
-  background-color: #a7ffd0;
+
 padding-top: 1rem;
 padding-bottom: 1rem;
   margin: 2rem;
@@ -63,10 +58,15 @@ padding-bottom: 1rem;
 }
 
 .filter label {
-  margin: 1rem;
+   
+     margin-left: 1rem;
+    
+     font-family: 'cabin sketch';
+     color: #dda300;
+     font-weight: 900;
 }
 .columns {
-  background-color: pink;
+  background-color: transparent;
   display: flex;
   /* justify-content: center; */
   /* align-items: center; */
@@ -84,20 +84,23 @@ padding-bottom: 1rem;
 }
 
 .card {
-  background-color: rgb(0, 181, 181);
+  background-color: #ffffff;
   max-width: 30%;
   margin: 1rem;
   padding: 1rem;
-  /* margin-bottom: 3rem; */
-  /* margin-right: 2rem; */
+
   text-align: center;
   flex-direction: column;
+  border-style: solid;
+  border-width: thick;
+  border-color: #50f7e9;
+  border-radius: 2rem;
 }
 
 .pet-info {
   display: inline-flex;
   
-  background-color: azure;
+
   padding-top: 1rem;
   padding-bottom: 1rem;
   padding-left: 0.5rem;
@@ -106,7 +109,7 @@ padding-bottom: 1rem;
 
 .pet-info2 {
   text-align:left;
-  background-color: bisque;
+
 }
 
 .card label {
@@ -129,21 +132,56 @@ padding-bottom: 1rem;
   object-fit: cover;
 }
 
-h3 {
-  margin-right: 0.8rem;
 
-}
 
-h1, h2 {
-  margin-top: 1rem;
-  margin-bottom: 1rem;
-}
+
 
 .paragraph {
   max-width: 50%;
   text-align: center;
   display: inline-flex;
   margin-bottom: 0.7rem;
+}
+
+/* Typography */
+
+a {
+ text-decoration: none;
+ color: #ffffff;
+}
+
+.login-form a {
+  color: #08cef1;
+}
+
+h1 {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  font-family: 'Cabin Sketch', cursive;
+  font-weight: 700;
+  color: #16bac6;
+  font-size: 2.7rem;
+
+}
+
+h2 {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  font-family: 'Cabin Sketch', cursive;
+  font-weight: 700;
+  text-align: center;
+font-size: 2.1rem;
+color: #16bac6;
+}
+
+.card h2 {
+ 
+    font-weight: 1000;
+    color: #007b8f;
+}
+h3 {
+  margin-right: 0.8rem;
+
 }
 
 /* Navigation */
@@ -154,7 +192,7 @@ nav {
 }
 
 header {
-  background: #c68080;
+  background: #195f6b;
   padding: 1rem;
   padding-bottom: 4rem;
   margin-left: -2rem;
@@ -178,20 +216,21 @@ ul li {
 }
 
 ul li a{
-  color: rgb(0, 0, 0);
+  color: #eff0f4;
   text-decoration: none;
   text-transform: uppercase;
-  font-size: 17px;
-  font-family: 'Nunito';
+  font-size: 1rem;
+  font-family: 'Open sans';
   padding: 15px 0 15px 15px;
   transition: all 0.15s linear 0s;
+  font-weight: 300;
 }
 
 ul li a:hover,
 ul#subnavigation .active,
 ul li a.active,
 #subnavigation li a:hover {
-  color: #5f6c65;
+  color: #fdc161;
 }
 
 #logout-form {
@@ -234,9 +273,6 @@ ul li a.active,
   text-align: left;
 }
 
-h2 {
-  text-align: center;
-}
 
 .pet-details .pet-info2 {
  
@@ -256,7 +292,7 @@ h2 {
 } 
 
 /* Full-width input fields */
- .create-pet input[type=text], .signup input[type=text]  ,.signup  input[type=password] ,.signup input[type=string]   {
+ .create-pet input[type=text], .edit input[type=text], .signup input[type=text]  ,.signup  input[type=password] ,.signup input[type=string]   {
   width: 100%;
   padding: 15px;
   margin: 5px 0 22px 0;
@@ -275,30 +311,12 @@ hr {
   margin-bottom: 25px;
 }
 
-/* Set a style for all buttons */
- /* button {
-  background-color: #04AA6D;
-  color: white;
-  padding: 14px 20px;
-  margin: 8px 0;
-  border: none;
-  cursor: pointer;
-  width: 100%;
-  opacity: 0.9;
-}
 
-button:hover {
-  opacity:1;
-} */
 
-/* Extra styles for the cancel button */
- .cancelbtn {
 
-  background-color: #f44336;
-} 
 
 /* Float cancel and signup buttons and add an equal width */
- .cancelbtn, .signupbtn {
+ .signupbtn {
   float: left;
   width: 50%;
 } 
@@ -325,7 +343,7 @@ button:hover {
 
 /* Change styles for cancel button and signup button on extra small screens */
  @media screen and (max-width: 300px) {
-  .cancelbtn, .signupbtn {
+ .signupbtn {
     width: 100%;
   }
 }  
@@ -377,7 +395,7 @@ button:hover {
 }
 
 .addpet {
-  background-color: rgb(242, 69, 98);
+  background-color: #fffeef;
   display: inline-flex;
   justify-content: center;
   align-items: center;
@@ -394,7 +412,7 @@ button:hover {
 
 /* CSS */
 button, .button  {
-  background-color: #EA4C89;
+  background-color: #fdc161;
   border-radius: 8px;
   border-style: none;
   box-sizing: border-box;
@@ -423,6 +441,10 @@ button, .button  {
 button:hover,
 button:focus {
   background-color: #F082AC;
+}
+
+.button.card {
+  background-color: #f3ae40
 }
 
 
