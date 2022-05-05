@@ -92,7 +92,7 @@ Pet.find(searchedPet)
 
 // DISPLAY ONLY MY PETS
 
-router.get('/mypets', (req, res, next) => {
+router.get('/mypets', isLoggedIn, (req, res, next) => {
 
     const { _id } = req.session.currentUser;
     Pet.find({ user: _id })

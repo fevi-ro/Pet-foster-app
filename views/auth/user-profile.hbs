@@ -1,17 +1,17 @@
-<h1>Your information</h1>
+<h1>Welcome, {{ userInSession.name }}!</h1>
    {{!-- {{#each userInSession}} --}}
 {{#if userInSession}}
-<h2>Welcome, {{ userInSession.email }}!</h2>
-<p>Name: {{userInSession.name}}</p>
+<h2>Your information</h2>
+<p>Email: {{userInSession.email}}</p>
 <p>Location: {{userInSession.location}}</p>
 <p>Rescue Team: {{userInSession.team}}</p> 
-<p>This is your profile page my friend!</p>
+
 
 
 
 
   <button>
-    <a href="/user-profile">Reload the page</a>
+    <a href="/pets">Back</a>
   </button>
 {{else}}
   <p>Still no logged in user, sorry!</p>
