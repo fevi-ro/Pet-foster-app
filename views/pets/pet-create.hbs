@@ -1,10 +1,9 @@
+<main class="wrapper">
+  <section class="addpet">
+<div class="create-pet">
 <h2>Add a new pet</h2>
 
 <form action="/pets/create" method="POST">
-
-  <label> Name:
-    <input type="text" name="name" required />
-  </label>
 
   <label> Animal:
     <select name="animal">
@@ -13,25 +12,38 @@
       {{/each}}
     </select>
  </label>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+  <label> Name:
+    <input type="text" name="name" required />
+  </label>
+
+
 
   <label> Gender:
     <input type="text" name="gender" required />
   </label>
 
   <label> Description:
-    <textarea name="description"> </textarea>
+      <input type="text" name="description" required />
   </label>
 
   <label> Date of birth:
-    <textarea name="dateOfBirth"> </textarea>
+      <input type="text" name="dateOfBirth" required />
+  </label>
+
+   <label> City:
+      <input type="text" name="location" required />
   </label>
 
   <label> Health issues:
-    <textarea name="healthIssues"> </textarea>
+      <input type="text" name="healthIssues" required />
   </label>
-   <label> Location:
-    <textarea name="location"> </textarea>
-  </label>
+
 
       <label for="formGroup6">Add image
       <input type="text" class="form-control" id="formGroup6" placeholder="Add here image url" name = "image">
@@ -39,3 +51,6 @@
 
   <button type="submit"> Add a pet </button>
 </form>
+</div>
+</section>
+</main>

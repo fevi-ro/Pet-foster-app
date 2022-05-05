@@ -1,13 +1,34 @@
+<main class="wrapper">
+  <div class="container">
+
 <h1>More about {{name}}</h1>
 <hr>
-<p>Animal: {{animal}}</p>
+{{!-- <p>Animal: {{animal}}</p>
 <p>Gender: {{gender}}</p>
 <p>Location: {{location}}</p>
-<p>Health issues: {{healthIssues}}</p>
-<p>Description: {{description}}</p>
-
+<p>Health issues: {{healthIssues}}</p> --}}
+<div class="pet-info">
+          <i class="material-icons">pets</i>
+          <h3>{{this.animal}}</h3>
+          <i class="material-icons">home</i>
+          <h3> {{this.user.location}}</h3>
+          <i class="material-icons">cake</i>
+          <h3> {{this.dateOfBirth}}</h3>
+        </div>
+   
+<div class="big-image">
    <img src="{{image}}" alt="pet image">
+   </div>
 <hr>
+<section class="pet-details">
+     <div class="pet-info2">
+          <p>Gender: {{this.gender}}</p>
+          <p>Foster: {{this.user.name}}</p>
+          <p>Team: {{this.user.team}}</p>
+          </div>
+<div class="pet-description">
+<p>Description: {{description}}</p> </div>
+</section>
 <a href="/pets/{{_id}}/edit">Edit</a>
 <hr>
     <form action="/pets/{{_id}}/delete" method="POST">
@@ -17,3 +38,7 @@
 
 <hr>
 <a href="/pets">Back</a>
+
+
+</div>
+</main>

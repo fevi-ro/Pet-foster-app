@@ -1,19 +1,32 @@
-<h1>Your information</h1>
-   {{!-- {{#each userInSession}} --}}
+
+
+
+
+
+{{!-- {{/each}} --}}
+
+
+
+<main class="wrapper"> 
+  <section class="container">
+{{!-- {{#each userInSession}} --}}
 {{#if userInSession}}
-<h2>Welcome, {{ userInSession.email }}!</h2>
-<p>Name: {{userInSession.name}}</p>
-<p>Location: {{userInSession.location}}</p>
-<p>Rescue Team: {{userInSession.team}}</p> 
-<p>This is your profile page my friend!</p>
 
 
+<div class="user-card">
+  <img src="images/black-profile-logo.png" alt="John" style="width:100%">
 
+<h2>Welcome, {{ userInSession.name }}!</h2>
+<h3>Email: {{userInSession.email}} </h3>
+<h3>Location: {{userInSession.location}} </h3>
+<h3>Rescue Team: {{userInSession.team}}</h3>
 
-  <button>
-    <a href="/user-profile">Reload the page</a>
-  </button>
+  <p><button> <a href="/user-profile">Reload the page</a></button></p>
+</div>
 {{else}}
-  <p>Still no logged in user, sorry!</p>
+<p>Still no logged in user, sorry!</p>
 {{/if}}
- {{!-- {{/each}} --}}
+
+
+</section>
+</main>

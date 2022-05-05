@@ -45,10 +45,14 @@ h1 {
 
 }
 
+label {
+  margin: 0rem;
+}
+
 .container {
 
   text-align: center;
-  background-color: #5f6c65;
+  background-color: #a7ffd0;
 padding-top: 1rem;
 padding-bottom: 1rem;
   margin: 2rem;
@@ -57,15 +61,26 @@ padding-bottom: 1rem;
   text-align: center;
   margin: 2rem;
 }
+
+.filter label {
+  margin: 1rem;
+}
 .columns {
   background-color: pink;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  align-content: center;
+  /* justify-content: center; */
+  /* align-items: center; */
+  /* align-content: center; */
   max-width: 100%;
   flex-direction: row;
+  flex-wrap: wrap;
 
+}
+
+.foster {
+  display: flex;
+  margin-top: 4rem;
+  margin-bottom: 4rem;
 }
 
 .card {
@@ -73,15 +88,15 @@ padding-bottom: 1rem;
   max-width: 30%;
   margin: 1rem;
   padding: 1rem;
-  margin-bottom: 3rem;
-  margin-right: 2rem;
-
+  /* margin-bottom: 3rem; */
+  /* margin-right: 2rem; */
   text-align: center;
+  flex-direction: column;
 }
 
 .pet-info {
   display: inline-flex;
-  width: 100%;
+  
   background-color: azure;
   padding-top: 1rem;
   padding-bottom: 1rem;
@@ -91,9 +106,10 @@ padding-bottom: 1rem;
 
 .pet-info2 {
   text-align:left;
+  background-color: bisque;
 }
 
-label {
+.card label {
   margin-left: 2rem;
 }
 
@@ -102,8 +118,15 @@ label {
  
 }
 
-img {
-  max-width: 100%;
+ img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+.banner img {
+  width: 100%;
+  height: revert;
+  object-fit: cover;
 }
 
 h3 {
@@ -111,6 +134,17 @@ h3 {
 
 }
 
+h1, h2 {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.paragraph {
+  max-width: 50%;
+  text-align: center;
+  display: inline-flex;
+  margin-bottom: 0.7rem;
+}
 
 /* Navigation */
 
@@ -122,7 +156,7 @@ nav {
 header {
   background: #c68080;
   padding: 1rem;
-  padding-bottom: 2rem;
+  padding-bottom: 4rem;
   margin-left: -2rem;
 }
 
@@ -164,3 +198,246 @@ ul li a.active,
   display: inline-flex;
 }
 
+/* Details Page */
+
+.pet-description {
+  max-width: 50%;
+  margin: 1rem;
+  padding-left: 1rem;
+
+  text-align: left;
+}
+
+ .big-image img{
+  max-width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.big-image {
+  height: 700px;
+  
+}
+
+.pet-details{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: unset;
+  align-content: stretch;
+}
+
+.col1-2 {
+  max-width: 50%;
+  margin-right: 3rem;
+  margin-left: 3rem;
+  text-align: left;
+}
+
+h2 {
+  text-align: center;
+}
+
+.pet-details .pet-info2 {
+ 
+  margin-top: 1rem;
+  margin-left: 8rem;
+  
+}
+
+
+/* Sign up */
+ * {box-sizing: border-box}
+
+.form-for-signup {
+  border: 1px solid #ccc;
+  display: flex;
+  width: 60%;
+} 
+
+/* Full-width input fields */
+ .create-pet input[type=text], .signup input[type=text]  ,.signup  input[type=password] ,.signup input[type=string]   {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  display: inline-block;
+  border: none;
+  background: #f1f1f1;
+}
+
+.create-pet input[type=text], .signup input[type=text]:focus, .signup input[type=password]:focus, .signup input[type=string]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+hr {
+  border: 1px solid #f1f1f1;
+  margin-bottom: 25px;
+}
+
+/* Set a style for all buttons */
+ /* button {
+  background-color: #04AA6D;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  opacity: 0.9;
+}
+
+button:hover {
+  opacity:1;
+} */
+
+/* Extra styles for the cancel button */
+ .cancelbtn {
+
+  background-color: #f44336;
+} 
+
+/* Float cancel and signup buttons and add an equal width */
+ .cancelbtn, .signupbtn {
+  float: left;
+  width: 50%;
+} 
+
+/* Add padding to container elements */
+ .signup {
+  padding: 16px;
+
+  display: block;
+} 
+
+.signup-form {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+} 
+
+/* Clear floats */
+ .clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
+} 
+
+/* Change styles for cancel button and signup button on extra small screens */
+ @media screen and (max-width: 300px) {
+  .cancelbtn, .signupbtn {
+    width: 100%;
+  }
+}  
+
+/* Login */
+
+.login-form {
+  padding: 16px;
+  text-align: left;
+}
+
+.login-heading {
+  text-align: center;
+}
+
+/* Full-width inputs */
+.login-form input[type=email], .login-form input[type=password] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+
+/* User profile card */
+.user-card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  max-width: 70%;
+  margin: auto;
+  margin-top: 1rem;
+  margin-bottom: 5rem;
+  text-align: center;
+}
+
+.user-card img {
+  height: fit-content;
+  object-fit: unset;
+  max-width: 30%;
+  margin-bottom: 3rem;
+}
+
+
+/* Create pet */
+
+.create-pet {
+  max-width: 60%;
+}
+
+.addpet {
+  background-color: rgb(242, 69, 98);
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  max-width: 100%;
+  flex-direction: row;
+
+}
+
+
+
+/* <!-- HTML !-->
+<button class="button-1" role="button">Button 1</button> */
+
+/* CSS */
+button, .button  {
+  background-color: #EA4C89;
+  border-radius: 8px;
+  border-style: none;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: inline-block;
+  font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  height: 40px;
+  line-height: 20px;
+  list-style: none;
+  margin: 0.7rem;
+  outline: none;
+  padding: 10px 16px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  transition: color 100ms;
+  vertical-align: baseline;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+button:hover,
+button:focus {
+  background-color: #F082AC;
+}
+
+
+
+
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+  body,
+  main,
+  .container,
+  .card,
+  .col1-2,
+  .foster,
+  .columns,
+  .pet-info,
+  .pet-info2 {
+      max-width: 100%;
+      margin: auto;
+  }}
