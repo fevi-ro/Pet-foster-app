@@ -29,8 +29,10 @@
 <div class="pet-description">
 <p>Description: {{description}}</p> </div>
 </section>
+
 <a href="/pets/{{_id}}/edit">Edit</a>
 <hr>
+<p>Is your heart melting? Get in touch with {{name}}'s foster for additional information: {{this.user.email}}</p>
     <form action="/pets/{{_id}}/delete" method="POST">
       <button>Delete</button>
     </form>
