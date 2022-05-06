@@ -65,31 +65,6 @@ Pet.find(searchedPet)
 
 });
 
-//FILTER PETS
-
-// router.post('/pets', (req, res) => {
-//   //  const {location, gender, animal} = req.body;
-
-//     let filter ={}; 
-//     if(req.body.animal){  
-//     filter.animal = req.body.animal;
-//  }
-// //  if(req.body.location){  
-// //     filter.location = req.body.location;
-// //  }
-//  if(req.body.gender){  
-//     filter.gender = req.body.gender;
-//  }
-//  console.log(filter)
-//     Pet.find(filter)
-//     .then ((pets) => {
-//     console.log(pets)
-//  //     res.render('pets-list', { gender, animal, pets: result});
-//     })
-//   })
-
-
-
 // DISPLAY ONLY MY PETS
 
 router.get('/mypets', isLoggedIn, (req, res, next) => {

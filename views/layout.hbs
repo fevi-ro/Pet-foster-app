@@ -4,7 +4,9 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>{{appTitle}}</title>
+    <title>{{foster4paws}}</title>
+     
+       <link rel="icon" type="image/png" sizes="32x32" href="images/favicon.png">
     <link rel="stylesheet" href="/stylesheets/style.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,20 +15,52 @@
   </head>
 
   <body>
+
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <section class="top-nav">
+
+ <a class="logo" href="/"><img src="images/pet-housewh.png" alt="Logo"></a>
+  
+    <input id="menu-toggle" type="checkbox" />
+    <label class='menu-button-container' for="menu-toggle">
+    <div class='menu-button'></div>
+  </label>
+    <ul class="menu">
+ <li><a href="/"> Homepage  </a></li>
+             <li> <a href="/pets">Pets</a></li>
+             <li><a href="/pets/create">Add Pet</a></li>
+             <li><a href="/mypets">My Pets</a></li>  
+             <li>  <a href="/user-profile">User Profile</a></li>
+ <li>   <a href="/signup">Register</a></li>
+             <li>     <a href="/login">Login</a> </li>
+    <li><form id="logout-form" action="/logout" method="POST">
+    <button>Logout</button>
+  </form></li>
+
+  <br>
+  <br>
+    </ul>
+  
+  </section>
+
+
+
 <header class="box">
          <nav>
-           <ul>
+             <a class="logo" href="/"><img src="images/pet-housewh.png" alt="Logo"></a>
+          <ul>
              <li><a href="/"> Homepage  </a></li>
              <li> <a href="/pets">Pets</a></li>
              <li><a href="/pets/create">Add Pet</a></li>
              <li><a href="/mypets">My Pets</a></li>  
              <li>  <a href="/user-profile">User Profile</a></li>
-             <li>   <a href="/signup">Register</a></li>
+      <li>   <a href="/signup">Register</a></li>
              <li>     <a href="/login">Login</a> </li>
-            <li><form id="logout-form" action="/logout" method="POST">
+ <li><form id="logout-form" action="/logout" method="POST">
     <button>Logout</button>
-  </form></li>
-           </ul>
+  </form></li> 
+           </ul> 
  
          </nav>
       </header>

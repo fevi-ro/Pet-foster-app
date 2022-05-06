@@ -22,24 +22,20 @@
 <hr>
 <section class="pet-details">
      <div class="pet-info2">
-          <p>Gender: {{this.gender}}</p>
-          <p>Foster: {{this.user.name}}</p>
-          <p>Team: {{this.user.team}}</p>
+          <h3>Gender: {{this.gender}}</h3>
+          <h3>Foster: {{this.user.name}}</h3>
+           <h3>Health Issues: {{this.healthIssues}}</h3>
+          <h3>Team: {{this.user.team}}</h3>
           </div>
 <div class="pet-description">
 <p>Description: {{description}}</p> </div>
 </section>
-<<<<<<< HEAD
- <button><a href="/pets/{{_id}}/edit">Edit</a></button>
-=======
 
-<a href="/pets/{{_id}}/edit">Edit</a>
->>>>>>> 02286de62b4bc192012863bdaff9973415d22df5
 <hr>
-<p>Is your heart melting? Get in touch with {{name}}'s foster for additional information: {{this.user.email}}</p>
-    <form action="/pets/{{_id}}/delete" method="POST">
-      <button>Delete</button>
-    </form>
+<p>Is your heart melting? Get in touch with {{name}}'s foster for additional information <i class="material-icons">favorite</i></p>
+  <button>Contact foster</button>
+  {{!-- {{this.user.email}} --}}
+
     <br>
 
 <hr>

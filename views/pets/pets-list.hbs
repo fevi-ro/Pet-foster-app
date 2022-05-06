@@ -12,20 +12,7 @@
           <option>{{this}}</option>
           {{/each}}
         </select>
-        {{!--
 
-        <select name="gender">
-          {{#each pets}}
-          <option value="{{this.gender}}">{{this.gender}}</option>
-          {{/each}}
-        </select> --}}
-
-        {{!--
-        <select name="location">
-          {{#each pets}}
-          <option value="{{this.location}}">{{this.location}}</option>
-          {{/each}}
-        </select> --}}
         <label for="gender">Gender</label>
         <input type="text" name="gender" placeholder="female"> </input>
         <label> Location:</label>
@@ -39,7 +26,7 @@
 
 
     <section class="columns">
-      {{!-- {{#grouped_each 3 pets}} --}}
+
       
         {{#each pets}}
         <div class="card">
@@ -66,34 +53,9 @@
         {{/each}}
 
       
-      {{!-- {{/grouped_each}} --}}
+   
     </section>
   </div>
 </main>
 
 
-
-{{!--
-<script>
-  //register new handlebars function
-  function hbsHelpers(hbs) {
-    hbs.registerHelper('grouped_each', function (every, context, options) {
-      var out = "", subcontext = [], i;
-      if (context && context.length > 0) {
-        for (i = 0; i < context.length; i++) {
-          if (i > 0 && i % every === 0) {
-            out += options.fn(subcontext);
-            subcontext = [];
-          }
-          subcontext.push(context[i]);
-        }
-        out += options.fn(subcontext);
-      }
-      return out;
-    });
-  }
-
-
-  module.exports = hbsHelpers;
-
-</script> --}}

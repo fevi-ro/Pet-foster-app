@@ -4,32 +4,43 @@
 
  <section class="columns">
       {{!-- {{#grouped_each 3 pets}} --}}
-<div class="card">
- {{#each pets}}
 
-<h2>{{this.name}}</h2>
-<img src="{{this.image}}" alt="Pet image">
+       {{#each pets}}
+        <div class="card">
+        <h2>{{this.name}}</h2>
+        <img src="{{this.image}}" alt="Pet image">
 
-<div class="pet-info">
- <i class="material-icons">pets</i><h3>{{this.animal}}</h3>
- <i class="material-icons">home</i> <h3> {{this.user.location}}</h3>
-<i class="material-icons">cake</i><h3> {{this.dateOfBirth}}</h3>
-</div>
-<div class="pet-info2"><p>Gender: {{this.gender}}</p>
- <p>Foster: {{this.user.name}}</p>
- <p>Team: {{this.user.team}}</p>
 
+        <div class="pet-info">
+          <i class="material-icons">pets</i>
+          <h3>{{this.animal}}</h3>
+          <i class="material-icons">home</i>
+          <h3> {{this.user.location}}</h3>
+          <i class="material-icons">cake</i>
+          <h3> {{this.dateOfBirth}}</h3>
+        </div>
+        <div class="pet-info2">
+          <p>Gender: {{this.gender}}</p>
+          <p>Foster: {{this.user.name}}</p>
+          <p>Team: {{this.user.team}}</p>
+          <button><a href="/pets/{{this._id}}">See details</a> 
+          {{!-- link that points to the details page --}}</button>
+          
 <button><a href="/pets/{{_id}}/edit">Edit</a></button>
 
 <form action="/pets/{{_id}}/delete" method="POST">
       <button>Delete</button>
     </form>
 <button><a href="/pets">Back</a></button>
-<br>
-</div>
- {{/each}}
+          <br>
+        </div>
+        </div>
+        {{/each}}
  </div>
  </section>
 </div>
 </main>
+
+
+
 
