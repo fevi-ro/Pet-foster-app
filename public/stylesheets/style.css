@@ -114,7 +114,7 @@ padding-bottom: 1rem;
 
   padding-top: 1rem;
   padding-bottom: 1rem;
-  padding-left: 0.5rem;
+  padding-right: 0.7rem;
 
 }
 
@@ -151,6 +151,8 @@ padding-bottom: 1rem;
 .edit {
   margin-top: 5rem;
   margin-bottom: 2rem;
+  max-width: 100%;
+  margin-left: 0rem;
 }
 
 
@@ -567,6 +569,12 @@ h2 {
 html, body {
   margin: 0;
   height: 100%;
+}
+
+.edit {
+
+  max-width: 90%;
+  margin-left: 1rem;
 }
 /* Hamburger menu */
 
