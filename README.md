@@ -1,5 +1,5 @@
 
-:dog: # foster4paws :cat:		
+:dog: **foster4paws** :cat:		
 
 This is our second project during the Ironhack Web development bootcamp
 
